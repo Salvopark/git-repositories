@@ -1,0 +1,32 @@
+
+[
+  {
+    "filename": "src/main.cpp",
+    "numberofCommits": 1127
+  },
+  {
+    "filename": "src/init.cpp",
+    "numberofCommits": 915
+  },
+  {
+    "filename": "src/net.cpp",
+    "numberofCommits": 610
+  },
+  {
+    "filename": "src/wallet/wallet.cpp",
+    "numberofCommits": 504
+  },
+  {
+    "filename": "src/main.h",
+    "numberofCommits": 473
+  },
+  {
+    "filename": "src/net.h",
+    "numberofCommits": 351
+  },
+  {
+    "filename": "src/qt/bitcoingui.cpp",
+    "numberofCommits": 345
+  }
+]
+

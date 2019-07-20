@@ -1,0 +1,34 @@
+{% extends "layout.html" %}
+{% block body %}
+<h1>Recent Repositories</h1>
+
+<div>
+    <span style="display:inline-block; width: 10%">Title</span>
+    <span style="display:inline-block; width: 40%">Repository URL</span>
+    <span style="display:inline-block; width: 20%">Last Updated</span>
+    <span style="display:inline-block; width: 20%">Posted By</span>
+    <span>
+        <form style="display:inline-block; width: 5%" action="/search"  method="POST">
+            <input type="text" name="search_item" >
+            <button name="searchBtn" type="submit" >Find</button>
+        </form>
+    </span>
+</div>
+<hr>
+{% for item in list %}
+<div>
+    <span style="display:inline-block; width: 10%">{{ item.title }}</span>
+    <span style="display:inline-block; width: 40%">{{ item.repo }}</span>
+    <span style="display:inline-block; width: 20%">{{ item.date_posted }}</span>
+    <span style="display:inline-block; width: 20%">{{ item.user_id }}</span>
+    <span>
+        <form style="display:inline-block; width: 5%" action="/delete"  method="POST">
+            <input hidden name="delete_item" value={{ item.title }} >
+            <button name="deleteBtn" type="submit">Delete</button>
+        </form>
+    </span>
+
+</div>
+{% endfor %}
+
+{% endblock %}

@@ -1,0 +1,98 @@
+{% extends "layout.html" %}
+{% block body %}
+<style></style>
+<h2>Author History Chart</h2>
+{% endblock %}
+
+<div id="chartContainer">
+
+    {% block javascript %}
+    <script src="http://d3js.org/d3.v3.min.js"></script>
+    <script src="http://dimplejs.org/dist/dimple.v2.0.0.min.js"></script>
+    <script type="text/javascript">
+        var svg = dimple.newSvg("#chartContainer", 590, 500);
+
+
+        d3.json("authorhistory.json", function(error, data) {
+            // Create Separate Date and Time, this allows us to draw them
+            // on separate axes.  Despite the time axis only displaying
+            // the time portion, the whole date is used so they need to
+            // have the same date allocated
+            // Create Separate Date and Time, this allows us to draw them
+            // on separate axes.  Despite the time axis only displaying
+            // the time portion, the whole date is used so they need to
+            // have the same date allocated
+            data.forEach(function (d) {
+                d["Day"] = d["date"].substring(0, d["date"].length - 9);
+                d["Time of Day"] =
+                    "2000-01-01 " + d["date"].substring(d["date"].length - 8);
+
+                if(d.hasOwnProperty("changes"))
+                {
+                    d["Number of file changed"] = d["changes"].length * 100;
+
+                }
+                else
+                {
+                    d["Number of file changed"] = 0;
+                }
+
+
+
+
+            }, this);
+
+
+
+            // Create the chart as usual
+            var myChart = new dimple.chart(svg, data);
+            myChart.setBounds(70, 40, 490, 320)
+
+            // Add the x axis reading dates in the format 01 Jan 2012
+            // and displaying them 01 Jan
+            var x = myChart.addTimeAxis("x", "Day", "%m-%d-%Y", "%m-%d-%Y");
+
+            // Add the y axis reading dates and times but only outputting
+            // times.
+            var y = myChart.addTimeAxis("y", "Time of Day", "%Y-%m-%d %H:%M:%S", "%H:%M:%S");
+
+
+            // Size the bubbles by volume
+            var z = myChart.addMeasureAxis("z", "Number of file changed");
+
+
+
+            // Setting min and max dates requires them to be set
+            // as actual javascript date objects
+            x.overrideMin = new Date(data[data.length-1].Day)
+
+            x.overrideMax = new Date(data[0].Day);
+            y.overrideMin = new Date("01/01/2000 12:00:00 am");
+            y.overrideMax = new Date("01/01/2000 11:59:59 pm");
+
+            // Show a label for every day
+            x.timePeriod = d3.time.month;
+            x.timeInterval = 1000;
+
+            // Control bubble sizes by setting the max and min values
+            z.overrideMin = 100;
+            z.overrideMax = 50000;
+
+
+            myChart.addSeries(["Gray" ], dimple.plot.line);
+            myChart.addSeries(["Number of file changed" ], dimple.plot.bubble);
+            myChart.addSeries(["date" , "hash", "reason" ], dimple.plot.line);
+
+            myChart.assignColor("Gray", "Blue", "Red");
+
+            // Draw everything
+            myChart.draw();
+
+        });
+
+
+
+    </script>
+</div>
+
+ {% endblock %}

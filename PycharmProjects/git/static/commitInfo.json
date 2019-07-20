@@ -1,0 +1,92 @@
+[
+	{
+		"name": "src/main.cpp",
+		"commits":1127,
+		"percent":0.0256,
+		"size":0
+	},
+	{
+		"name": "src/init.cpp",
+		"commits":951,
+		"percent":0.0216,
+		"size":95301
+	},
+	{
+		"name": "src/net.cpp",
+		"commits":642,
+		"percent":0.0146,
+		"size":90147
+	},
+	{
+		"name": "src/wallet/wallet.cpp",
+		"commits":570,
+		"percent":0.0129,
+		"size":174442
+	},
+	{
+		"name": "src/main.h",
+		"commits":473,
+		"percent":0.0107,
+		"size":0
+	},
+	{
+		"name": "src/wallet/rpcwallet.cpp",
+		"commits":400,
+		"percent":0.0091,
+		"size":199717
+	},
+	{
+		"name": "src/qt/bitcoingui.cpp",
+		"commits":379,
+		"percent":0.0086,
+		"size":56129
+	},
+	{
+		"name": "src/net.h",
+		"commits":377,
+		"percent":0.0086,
+		"size":30136
+	},
+	{
+		"name": "src/util.cpp",
+		"commits":333,
+		"percent":0.0076,
+		"size":0
+	},
+	{
+		"name": "src/wallet/wallet.h",
+		"commits":321,
+		"percent":0.0073,
+		"size":55781
+	},
+	{
+		"name": "src/validation.cpp",
+		"commits":304,
+		"percent":0.0069,
+		"size":228726
+	},
+	{
+		"name": "configure.ac",
+		"commits":293,
+		"percent":0.0067,
+		"size":58060
+	},
+	{
+		"name": "src/qt/bitcoin.cpp",
+		"commits":291,
+		"percent":0.0066,
+		"size":23298
+	},
+	{
+		"name": "src/Makefile.am",
+		"commits":285,
+		"percent":0.0065,
+		"size":18848
+	},
+	{
+		"name": "src/util.h",
+		"commits":280,
+		"percent":0.0064,
+		"size":0
+	}
+]

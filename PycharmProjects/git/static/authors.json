@@ -1,0 +1,77 @@
+[
+	{
+		"author": "Wladimir J. van der Laan",
+		"commits": 6039,
+		"percent": 0.3036
+	},
+	{
+		"author": "Pieter Wuille",
+		"commits": 1667,
+		"percent": 0.0838
+	},
+	{
+		"author": "MarcoFalke",
+		"commits": 1549,
+		"percent": 0.0779
+	},
+	{
+		"author": "Gavin Andresen",
+		"commits": 1101,
+		"percent": 0.0554
+	},
+	{
+		"author": "Jonas Schnelli",
+		"commits": 646,
+		"percent": 0.0325
+	},
+	{
+		"author": "Philip Kaufmann",
+		"commits": 639,
+		"percent": 0.0321
+	},
+	{
+		"author": "Matt Corallo",
+		"commits": 620,
+		"percent": 0.0312
+	},
+	{
+		"author": "Cory Fields",
+		"commits": 594,
+		"percent": 0.0299
+	},
+	{
+		"author": "Jeff Garzik",
+		"commits": 533,
+		"percent": 0.0268
+	},
+	{
+		"author": "John Newbery",
+		"commits": 417,
+		"percent": 0.021
+	},
+	{
+		"author": "practicalswift",
+		"commits": 399,
+		"percent": 0.0201
+	},
+	{
+		"author": "Luke Dashjr",
+		"commits": 363,
+		"percent": 0.0183
+	},
+	{
+		"author": "Gregory Maxwell",
+		"commits": 266,
+		"percent": 0.0134
+	},
+	{
+		"author": "s_nakamoto",
+		"commits": 245,
+		"percent": 0.0123
+	},
+	{
+		"author": "Suhas Daftuar",
+		"commits": 232,
+		"percent": 0.0117
+	}
+]

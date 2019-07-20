@@ -1,0 +1,36 @@
+[
+  {
+    "hash": "23a1fa0248fe3d152c6d74e919a19ccdb5141155",
+    "date": "12-06-2018 13:50:52",
+    "reason": "Merge-14564-Adjust-configure-so-that-only-bip70-is-disabled-when-protobuf-is-missing-instead-of-the-GUI"
+  },
+  {
+    "hash": "4987cdd16d76ea2582a669b2fc6b1983721febed",
+    "date": "12-06-2018 11:33:39",
+    "reason": "Merge-14882-doc-developer-notes.md-point-out-that-UniValue-deviates-from-upstream"
+  },
+  {
+    "hash": "e2c473ff75f9ec272ab23e0ee30728b72aecd8f2",
+    "date": "12-05-2018 11:03:49",
+    "reason": "Merge-14796-rpc-Pass-argument-descriptions-to-RPCHelpMan"
+  },
+  {
+    "hash": "fabca42c68ee4cdff08d30e91412ccf1de6d7b41",
+    "date": "12-04-2018 13:47:49",
+    "reason": "RPCHelpMan-Add-space-after-colons-in-extended-description",
+    "changes":[
+      {"file": "src/rpc/util.cpp"},
+      {"file": "src/rpc/util.h"}
+    ]
+  },
+  {
+    "hash": "fafd040f7321294d5e4335b9581a6bd46a714c37",
+    "date": "12-04-2018 12:06:13",
+    "reason": "rpc-Add-description-to-fundrawtransaction-vout_index",
+    "changes": [
+      {"file": "src/wallet/rpcwallet.cpp"
+      }
+    ]
+  }
+
+]

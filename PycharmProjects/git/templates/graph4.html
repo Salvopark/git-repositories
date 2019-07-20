@@ -1,0 +1,269 @@
+{% extends "layout.html" %}
+{% block body %}
+<style></style>
+<h2>Bubble Chart</h2>
+<p>Display some Data using <a href="http://d3js.org/">d3</a></p>
+{% endblock %}
+
+{% block javascript %}
+<div class="chart-example" id="chart"><svg></svg></div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/d3/4.6.0/d3.min.js"></script>
+<script type="text/javascript">
+    function bubbleChart() {
+        //init
+		let marginTop = 96,
+            minRadius = 5,
+            maxRadius = 50,
+            forceApart = -300,
+			chartSVG;
+			
+        //renders the chart once all settings are set.
+        function chart(selection) {
+            let data = selection.datum();
+            let div = selection,
+                svg = div.selectAll('svg');
+            svg.attr('width', width).attr('height', height);
+            chartSVG=svg;
+
+			//tooltop init
+            let tooltip = selection
+                .append("div")
+                .style("position", "absolute")
+                .style("visibility", "hidden")
+                .style("color", "white")
+                .style("padding", "8px")
+                .style("background-color", "#626D71")
+                .style("border-radius", "6px")
+                .style("text-align", "center")
+                .style("font-family", "monospace")
+                .style("width", "400px")
+                .text("");
+
+			//puts space between nodes
+            let simulation = d3.forceSimulation(data)
+                .force("charge", d3.forceManyBody().strength([forceApart]))
+                .force("x", d3.forceX())
+                .force("y", d3.forceY())
+                .on("tick", ticked);
+
+            function ticked(e) {
+                node.attr("transform",function(d) {
+                    return "translate(" + [d.x+(width / 2), d.y+((height+marginTop) / 2)] +")";
+                });
+            }
+
+			//employ min and max radius
+            let minRadiusDomain = d3.min(data, function(d) {
+                return +d[radius];
+            });
+            let maxRadiusDomain = d3.max(data, function(d) {
+                return +d[radius];
+            });
+			//scale graph based on radius
+            let scaleRadius = d3.scaleLinear()
+                .domain([minRadiusDomain, maxRadiusDomain])
+                .range([minRadius, maxRadius])
+
+            /*
+            var svg = d3.select("body")
+                .append("svg")
+                .attr("width", "100%")
+                .attr("height", "100%")
+                .call(d3.zoom().on("zoom", function () {
+                    svg.attr("transform", d3.event.transform)
+                }))
+                .append("g")*/
+
+			//main chart setup
+            let node = svg.selectAll("circle")
+                .data(data)
+                .enter()
+                .append("g")
+                .attr('transform', 'translate(' + [width / 2, height / 2] + ')')
+                .style('opacity',1);
+
+			//handles circle color
+			let color;
+			color = d3.scaleOrdinal(d3.schemeCategory10);
+			
+			//creates individual circles
+            node.append("circle")
+                .attr("id",function(d,i) {
+                    return i;
+                })
+                .attr('r', function(d) {
+                    return scaleRadius(d[radius]);
+                })
+                .style("fill", function(d) {
+                    return color(d["percent"]);
+                })
+				.on("mouseover", function(d) {
+					tooltip.html(d[title] + "<br/>" + d["percent"]*100 + "% total commits" +"<br/>" + d[radius] + " "+ unitName);
+					return tooltip.style("visibility", "visible");
+				})
+				.on("mousemove", function() {
+					return tooltip.style("top", (d3.event.pageY - 10) + "px").style("left", (d3.event.pageX + 10) + "px");
+				})
+				.on("mouseout", function() {
+					return tooltip.style("visibility", "hidden");
+				});
+
+            node.append("clipPath")
+                .attr("id",function(d,i) {
+                    return "clip-"+i;
+                })
+                .append("use")
+                .attr("xlink:href",function(d,i) {
+                    return "#" + i;
+                });
+				
+			//renders title on top of circles
+			node.append("text")
+				/*limits data to within circle; not wanted, but saved.
+				.attr("clip-path",function(d,i) {
+					return "url(#clip-" + i + ")"
+				})*/
+				.attr("text-anchor", "middle")
+				.append("tspan")
+				.attr("x",function(d) {
+					return 0;//-1*scaleRadius(d[radius])/3;
+				})
+				.attr("y",function(d) {
+					return ".3em";//scaleRadius(d[radius])/4;
+				})
+				.text(function(d) {
+					return d["number"];
+				})
+				.on("mouseover", function(d) {
+					tooltip.html(d[title] + "<br/>" + d["percent"]*100 + "% total commits" +"<br/>" + d[radius] + " "+ unitName);
+					return tooltip.style("visibility", "visible");
+				})
+				.on("mousemove", function() {
+					return tooltip.style("top", (d3.event.pageY - 10) + "px").style("left", (d3.event.pageX + 10) + "px");
+				})
+				.on("mouseout", function() {
+					return tooltip.style("visibility", "hidden");
+				});
+
+            svg.append('text')
+                .attr('x',width/2).attr('y',marginTop)
+                .attr("text-anchor", "middle")
+                .attr("font-size","1.8em")
+                .text(name);
+        }
+		
+		//setter/getter methods
+        chart.width = chartWidth;
+        chart.height = chartHeight;
+		chart.title = chartTitle;
+        chart.radius = chartColForRadius;
+        chart.minRadius = chartMinRadius;
+        chart.maxRadius = chartMaxRadius;
+        chart.forceApart = chartForceApart;
+        chart.unitName = chartUnitName;
+
+        // Get/set the height of the chart.
+        // use 'chart.width' to get or set.
+        function chartWidth(value) {
+            if (!arguments.length) {
+                return width;
+            }
+            width = value;
+            return chart;
+        };
+
+        //Get/set the height of the chart.
+        //Use 'chart.height' to get or set.
+        function chartHeight(value) {
+            if (!arguments.length) {
+                return height;
+            }
+            height = value;
+            marginTop=0.05*height;
+            return chart;
+        };
+
+        //Get/set the property that determines the title of the chart.
+        //Use 'chart.title' to get or set.
+        function chartTitle(value) {
+            if (!arguments.length) {
+                return title;
+            }
+            title = value;
+            return chart;
+        }
+		
+        //Get/set the property to determine the radii of the bubbles.
+        //Use 'chart.radius' to get or set.
+        function chartColForRadius (value) {
+            if (!arguments.length) {
+                return radius;
+            }
+            radius = value;
+            return chart;
+        };
+
+        //Get/set the minimum radius of the bubbles.
+        //Use 'chart.minRadius' to get or set.
+        function chartMinRadius(value) {
+            if (!arguments.length) {
+                return minRadius;
+            }
+            minRadius = value;
+            return chart;
+        };
+
+        //Get/set the maximum radius of the bubbles.
+        //Use 'chart.maxRadius' to get or set.
+        function chartMaxRadius(value) {
+            if (!arguments.length) {
+                return maxRadius;
+            }
+            maxRadius = value;
+            return chart;
+        };
+
+        //Get/set the unit name for the property the is represented by the radius of the bubbles.
+        //Used in the tooltip of the bubbles.
+        //Use 'chart.unitName' to get or set.
+        function chartUnitName(value) {
+            if (!arguments.length) {
+                return unitName;
+            }
+            unitName = value;
+            return chart;
+        };
+
+        //Get/set the force the separates and pushes together the bubbles on loading of the chart
+        //Use 'chart.forceApart' to get or set.
+        function chartForceApart(value) {
+            if (!arguments.length) {
+                return forceApart;
+            }
+            forceApart = value;
+            return chart;
+        };
+        return chart;
+    }
+    //read in data
+	value = "2";
+	switch (value) {
+		case "1":
+			d3.json("{{ url_for('static', filename='commitInfo.json') }}", function(error, data) {
+				if (error) throw error;
+				let chart = bubbleChart().width(960).height(720).title("name").radius("commits").unitName("commits");
+				d3.select('#chart').datum(data).call(chart);
+			});
+			break;
+		case "2":
+			d3.json("{{ url_for('static', filename='authors.json') }}", function(error, data) {
+				if (error) throw error;
+				let chart = bubbleChart().width(960).height(720).title("author").radius("commits").unitName("commits");
+				d3.select('#chart').datum(data).call(chart);
+			});
+			break;
+		default:
+			break;
+	}
+</script>
+{% endblock %}

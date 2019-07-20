@@ -1,0 +1,305 @@
+Date 10/12
+Attendees
+	Ian Gilbert
+	Babita Thapa
+
+Assumptions:
+	We will talk with Zaid on Monday.
+	Scheduling Meetings:
+		Mon, Wed 	@ 3:30
+		Tue, Thur	@ 12:00 - 2:00
+	
+Action Items:
+	Create Git SOW
+	Owner:	Ian Gilbert
+	Due Date: 10/12
+	
+	update JIRA
+	Owner: Ian Gilbert
+	Due Date: 10/12
+	
+	
+	
+Date 10/15
+Attendees
+    Ian Gilbert
+    Babita Thapa
+    Zaid Altahat (Client)
+    
+Assumptions:
+    Learn Flask (for Ian)
+    Just work with manual JSON for now
+    Deal with automation only when base is finished
+    
+Action Items:
+    Parse Data: work on using a JSON file and use regex to grab file names, # of instances, commit type.
+        Owner: Ian
+        Due Date: 10/25
+    D3: Operate in IDE, be able to receive data
+        Owner: Babipa
+        Due Date: 10/25
+    
+    
+    
+Date 10/16
+Attendees
+    Ian Gilbert
+    Babita Thapa
+Assumptions:
+    ---
+Action Items:
+    Working on Python Script
+        Owner: Ian Gilbert
+        Due Date: 10/25
+    Working on D3
+        Owner: Babita Thapa
+        Due Date: 10/25
+    
+    
+        
+Date 10/18
+Attendees
+    Ian Gilbert
+    Babita Thapa
+Assumptions:
+    Integrating Panda and Gephi
+    
+Action Items:
+    Working on Python Script
+        Owner: Ian Gilbert
+        Due Date: 10/25
+    Working on D3
+        Owner: Babita Thapa
+        Due Date: 10/25
+
+Date 10/22
+Attendees
+    Ian Gilbert
+    Babita Thapa
+    Ryan Groves
+    Aaron Salvo
+    Zaid Altahat (Client)
+Assumptions:
+    Create dummy D3 graph to visualize in web
+    Create dummy data to parse into D3
+    Manually grab all data/convert data until future automation
+    By the time the sprint finishes, we will no longer need dummy data (hopefully)
+
+Action Items:
+    Build form to get github URL from user input (bitcoin gives bitcoin's git url)
+	Owner: Ryan Groves
+	Due Date: Tentative
+    Use above github URL to clone latest repo
+	Owner: Ian Gilbert
+	Due Date: 10/25
+    Use Git commands to grab a "stats.json" format file
+	Owner: Ian Gilbert
+	Due Date: Tentative
+    Process above .csv file into D3 Graph
+	Owner: Babita Thapa
+	Due Date: 10/25
+    Display D3 graph && run on AWS lambda serverless architecture
+	Owner: Ryan Groves / Aaron Salvo
+	Due Date: 10/25
+    Extra: CSS work, webpage forms/GUI, etc.
+	Owner: Ryan Groves / Aaron Salvo
+    Extra: Before analysis, check if anything has changed for X repository.
+    If nothing has changed, don't rerun the analysis. The data is already in database.
+	Idea: Grab commits from (time of last analysis) to now, update if able.
+	Owner: None
+
+    Create a gephi visualization of commit history and commit relationships
+    (separate commits, how many unique files, how many changes, connect to other commits, consistency)
+	Owner: Mike Fischer / Ian Gilbert
+	Due Date: None
+	
+
+
+Date 11/5
+Attendees
+    Ian Gilbert
+    Ryan Groves
+    Babita Thapa
+    
+Assumptions
+    Python scripts won't have an issue with arguments currently
+    Can use a dropdown to choose script to run
+    D3 graph can be made on the fly using unmodified output
+
+Action Items
+    Recreate original .csv with only two arguments
+        Owner: Ian Gilbert
+        Due Date: 11-5
+    Produce two .csv for babita
+        Owner: Ian Gilbert
+        Due Date: 11-5
+    Fix/Rewrite authorCommits script to take arguments
+        Owner: Ian Gilbert
+        DUe Date: 11-8
+    Create two separate graphs for both percentages & total Commits
+        Owner: Babita Thapa
+        Due Date: 11-8
+    Create User form
+        Owner: Aaron Salvo (will be reported by Ryan)
+        Due Date: 11-8
+    Create Database
+        Owner: Aaron Salvo (will be reported by Ryan)
+        Due Date: Tentative 
+    Use user input to create D3 graph on the fly
+        Owner: Ryan Groves
+        Due Date: 11-8
+    Format to use .csv
+        Owner: Ryan Groves
+        Due Date: 11-8
+
+Date: 11/12
+
+Attendees:
+    Ian Gilbert
+    Ryan Grove
+    Aaron Salvo
+
+Assumptions:
+    Allow for multiple graphs per function
+    Drop .csv drop .tsv, only use .json
+
+Action Items:
+    Focus on Integration and Automation for this next sprint
+        Owner: All
+    Updating form for repository:
+	get repo link, function, graph type
+        Owner: Ryan Grove
+        Due Date: 11/27
+    Create Database, database security
+        Owner: Aaron Salvo
+        Due Date: 11/27
+    Create working D3 graphs that can run with .json
+        Owner: Babita Thapa
+        Due Date: 11/27
+    Convert data to .json files
+        Owner: Ian Gilbert
+        Due Date: 11/16
+    Work using remote repository as opposed to local
+        Owner: Ian Gilbert
+        Due Date: 11/16
+   
+
+
+Date: 11/15
+
+Attendees:
+    Ian Gilbert
+    Ryan Grove
+    Babita Thapa
+
+Assumptions:
+    Will move .py files to Ryan's folder, cfiles will disappear
+    JSON files are valid but have wrong info. This will be fixed eventually.
+
+Action Items:
+    Remove top header from JSON files
+        Owner: Ian Gilbert
+        Due Date: 11/15
+    Redo git repo
+        Owner: Babita Thapa
+        Due Date: 11/15
+    Need to grab info from weblink instead of local repo
+        Owner: Ian Gilbert
+        Due Date: 11/20
+    Integrate Babita's graph into webapp
+        Owner: Ryan Grove
+        Due Date: 11/20
+
+Date: 11/19
+
+Attendees:
+    Ian Gilbert
+    Aaron Salvo
+    Babita Thapa
+
+Assumptions:
+    Will move .py files to Ryan's folder, cfiles will disappear
+    JSON files are valid but have wrong info. This will be fixed eventually.
+
+Action Items:
+    Start work on personal graph to send to Ryan
+        Owner: Ian Gilbert
+        Due Date: 11/20
+    Keep fixing web app issues (working with Ryan)
+        Owner: Babita Thapa
+        Due Date: ??
+    SQL Database
+        Owner: Aaron Salvo
+        Due Date: 11/26
+    Schedule meeting with Zaid to talk about Gitbase
+        Owner: Ian Gilbert
+        Due Date: 11/21
+
+
+Date: 11/26
+
+Attendees:
+    Aaron Salvo
+    Ian Gilbert
+
+Assumptions:
+    Webpage forms now works well
+    Database is created
+    Current Use-Case setup goal:
+        Webpage form takes in user data: title, description, GRAPH TYPE, REPO URL
+        Database stores new repo data: title/descr, type, repo url
+        webpage passes script the repo url.
+        script clones repo, or, if repo exists, pulls a new copy (if >=24h old)
+        script runs chosen method(s) with optional limiters
+        script creates related .json files
+        database? stores .json files for this repo
+        static is updated to current .json files
+        graph tab (or similar) decides graph type in real time via GRAPH TYPE
+        creates d3 graph with corresponding html+static data
+
+Action Items:
+    Finish final pieces to bubble graph (adaptable)
+        Owner: Ian Gilbert
+        Due Date: 11/27
+    Fix login issue (form access)
+        Owner: Aaron Salvo
+        Due Date: ?
+    Create UML diagram
+        Owner: Ian Gilbert
+        Due Date: 11/27
+    Create a new graph using all pieces of the project
+        Owner: All
+        Due Date: ?
+
+Date: 12/3
+
+Attendees:
+    Ian Gilbert
+    Babita Thapa
+    Aaron Salvo
+
+Assumptions:
+    Server will have working code by sprint date
+    Server will output a public URL that links to the webpage
+
+Finish graph visuals and work out bugs
+    Babita Thapa
+    Due: 12/6
+Work with author history graph y-axis
+    Babita Thapa
+    Due: 12/6
+Finish testing scripts
+    Ian Gilbert
+    Due: 12/6
+Find a way to get code onto the server, either through forge or by a github loophole
+    Ian Gilbert
+    Due: 12/6
+Add tooltip changes to current graphs
+    Ian Gilbert
+    Due 12/4
+Setup a public url that will be used by the server
+    Aaron Salvo
+    Due: 12/6
+Run scripts through webapp, ask user for input for scripts
+    Aaron Salvo
+    Due 12/6
